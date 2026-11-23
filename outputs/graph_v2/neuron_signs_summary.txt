@@ -1,0 +1,4 @@
+neurons: 16599
+neurons with >=10 outgoing rows: 12898; share of type-1 rows per neuron, in tenths: [23, 185, 398, 637, 976, 1720, 2581, 3260, 2263, 855]
+neurons with >=10 good outgoing rows: 3365; share of type-1 rows per neuron, in tenths: [922, 830, 472, 266, 124, 119, 81, 72, 123, 356]
+neurons with no outgoing rows at all: 364

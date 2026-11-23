@@ -1,0 +1,85 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/robotis/darwin-op/protos/RobotisOp2.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto"
+
+WorldInfo {
+  info [
+    "ExoHominid: DARwIn-OP (ROBOTIS OP2) pushes a box, controlled by an H01-connectome reservoir."
+    "The robot starts at the origin facing +x. The controller places the box and the goal line at every reset, from config.py."
+  ]
+  title "ExoHominid push box"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "box"
+      material2 "default"
+      coulombFriction [
+        0.4
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.1 0.2 0.97 1.2
+  position -0.9 -1.4 0.8
+  follow "ROBOTIS OP2"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1000 1000
+  tileSize 1 1
+  appearance Parquetry {
+  }
+}
+RobotisOp2 {
+  translation 0 0 0.236
+  controller "h01_dataset_policy"
+  supervisor TRUE
+  selfCollision TRUE
+}
+DEF BOX Solid {
+  translation 0.5 0 0.302
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.72 0.5 0.28
+        roughness 0.8
+        metalness 0
+      }
+      geometry Box {
+        size 0.6 0.6 0.6
+      }
+    }
+  ]
+  name "box"
+  contactMaterial "box"
+  boundingObject Box {
+    size 0.6 0.6 0.6
+  }
+  physics Physics {
+    density -1
+    mass 0.5
+  }
+}
+DEF GOAL_LINE Solid {
+  translation 0.6 0 0.001
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.1 0.7 0.2
+        metalness 0
+      }
+      geometry Box {
+        size 0.03 1.2 0.002
+      }
+    }
+  ]
+  name "goal_line"
+}

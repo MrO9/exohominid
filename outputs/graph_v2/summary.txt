@@ -1,0 +1,40 @@
+edge files read: 166; rows read: 160259769; soma-labelled ids: 73896
+rows by (sender in set, receiver in set): {(False, False): 130314981, (False, True): 28739844, (True, False): 864436, (True, True): 340508}
+
+TYPE-1 SHARE BY CLASS PAIR (all rows; pair: rows, share of type 1):
+   AXON -> DENDRITE: 132914844, 0.366
+   AXON -> UNKNOWN: 13207814, 0.528
+   UNKNOWN -> DENDRITE: 3784547, 0.656
+   DENDRITE -> DENDRITE: 3552653, 0.488
+   AXON -> AXON: 3151476, 0.573
+   UNKNOWN -> UNKNOWN: 1360113, 0.701
+   DENDRITE -> UNKNOWN: 638938, 0.656
+   AXON -> SOMA: 526143, 0.795
+   UNKNOWN -> AXON: 301163, 0.747
+   AXON -> AIS: 263956, 0.852
+   UNKNOWN -> SOMA: 98165, 0.829
+   CILIA -> DENDRITE: 71274, 0.464
+   DENDRITE -> CILIA: 71217, 0.462
+   AXON -> CILIA: 62872, 0.511
+   (focus) AXON -> SOMA: 526143, share of type 1 = 0.795
+   (focus) AXON -> AIS: 263956, share of type 1 = 0.852
+   (focus) AXON -> DENDRITE: 132914844, share of type 1 = 0.366
+
+CELL PROFILE over soma-labelled ids
+rows labelled SOMA per id, buckets (<=1, <=4, <=9, <=24, <=99, more): [25730, 19924, 10005, 8828, 8341, 1068]
+rows as DENDRITE receiver per id, buckets (<=0, <=9, <=49, <=199, <=999, more): [43590, 8087, 4550, 3177, 6437, 8055]
+ids with >=5 soma rows: 28242; ids with >=5 soma rows and >=20 dendrite-receiver rows: 16599
+
+GRAPH VARIANTS (edges, cells with an edge, giant strongly connected component):
+   all edges: 175106 edges, 37196 cells, giant SCC 18447
+   n_rows >= 2: 55359 edges, 26135 cells, giant SCC 7290
+   n_good >= 1: 39071 edges, 16485 cells, giant SCC 2924
+   n_good >= 2: 6584 edges, 5857 cells, giant SCC 7
+   n_bad == 0: 112738 edges, 28795 cells, giant SCC 13993
+   n_bad == 0 and n_rows >= 2: 33136 edges, 17318 cells, giant SCC 4600
+
+SENDERS with >=20 good (AXON->DENDRITE/SOMA/AIS) rows: 2130; share of type-1 rows per sender, in tenths: [599, 605, 277, 159, 70, 55, 38, 37, 72, 218]
+EDGES with >=5 good rows: 655; share of type-1 rows per edge, in tenths: [169, 64, 80, 18, 26, 2, 18, 3, 40, 235]
+
+proofread cells in the soma-labelled set: 53 of 104
+edges touching a proofread cell: 637; between two proofread cells: 0

@@ -1,0 +1,132 @@
+{
+ "sg": {
+  "hip": [
+   -1,
+   1
+  ],
+  "knee": [
+   1,
+   -1
+  ],
+  "ankle": [
+   1,
+   -1
+  ]
+ },
+ "z_stand": 0.33908223486780553,
+ "z_floor": 0.3375599640760216,
+ "crouch": 0.3,
+ "lean0": 0.0,
+ "ver": 4,
+ "gait": {
+  "period": 0.6333674392759545,
+  "hip_amp": 0.17908963144948722,
+  "knee_amp": 0.37165733059823247,
+  "ankle_follow": 0.6616859883467424,
+  "lean": 0.0352,
+  "roll_amp": 0.19630496334766973,
+  "roll_phase": 0.1821,
+  "foot_ratio": 0.6150700489035267,
+  "yaw_amp": -0.000895385791850627,
+  "arm_amp": 0.1303487156359889,
+  "side_amp": 0.0,
+  "side_phase": 0.0,
+  "side_foot": 0.5,
+  "roll_mirror": 1,
+  "arm_mirror": -1,
+  "phase_dir": 1
+ },
+ "gait_f": -0.11773601129181852,
+ "search_done": true,
+ "humanized": 7,
+ "arms_sig": "[1.62, -1.65, 0.6, -0.6]",
+ "omni": {
+  "back": {
+   "gait": {
+    "period": 0.8266301651695721,
+    "hip_amp": 0.030067491073445488,
+    "knee_amp": 0.3848172213894079,
+    "ankle_follow": 0.8,
+    "lean": 0.06228428567486106,
+    "roll_amp": 0.04920492589014644,
+    "roll_phase": 0.45207070691214923,
+    "foot_ratio": 2.0,
+    "yaw_amp": 0.11929746865938876,
+    "arm_amp": -0.30581036378938337,
+    "side_amp": 0.0,
+    "side_phase": 0.0,
+    "side_foot": 0.5,
+    "roll_mirror": -1,
+    "arm_mirror": -1,
+    "phase_dir": 1
+   },
+   "f": 1.0866739880575145,
+   "done": true
+  },
+  "left": {
+   "gait": {
+    "period": 0.5538615619654251,
+    "hip_amp": 0.002708358991718068,
+    "knee_amp": 0.29635641115340144,
+    "ankle_follow": 0.880238863368445,
+    "lean": 0.10679923037789359,
+    "roll_amp": -0.008047233862749017,
+    "roll_phase": 0.32765579067911826,
+    "foot_ratio": 0.6649289888843275,
+    "yaw_amp": -0.028129073749024625,
+    "arm_amp": -0.19942646565795835,
+    "side_amp": -0.3774212635076832,
+    "side_phase": 0.6927598071419232,
+    "side_foot": 0.20918994813927866,
+    "roll_mirror": 1,
+    "arm_mirror": -1,
+    "phase_dir": 1
+   },
+   "f": 2.6598702632391813,
+   "done": true
+  },
+  "right": {
+   "gait": {
+    "period": 0.7252833265775362,
+    "hip_amp": 0.0,
+    "knee_amp": 0.4662060489238071,
+    "ankle_follow": 0.8926445346248082,
+    "lean": 0.09008714587957731,
+    "roll_amp": 0.02604305141764581,
+    "roll_phase": 0.31229528893203945,
+    "foot_ratio": 1.6623281676842179,
+    "yaw_amp": -0.0270916826042754,
+    "arm_amp": 0.5288463657746827,
+    "side_amp": 0.5,
+    "side_phase": 0.6058693336338372,
+    "side_foot": 0.1034743515974329,
+    "roll_mirror": 1,
+    "arm_mirror": -1,
+    "phase_dir": 1
+   },
+   "f": 3.26721803486958,
+   "done": true
+  }
+ },
+ "robust": 2,
+ "gait_backup": {
+  "period": 0.6398,
+  "hip_amp": 0.1855,
+  "knee_amp": 0.2966,
+  "ankle_follow": 0.9556,
+  "lean": 0.0352,
+  "roll_amp": 0.2104,
+  "roll_phase": 0.1821,
+  "foot_ratio": 0.4815,
+  "yaw_amp": 0.0143,
+  "arm_amp": 0.2728,
+  "side_amp": 0.0,
+  "side_phase": 0.0,
+  "side_foot": 0.5,
+  "roll_mirror": 1,
+  "arm_mirror": -1,
+  "phase_dir": 1
+ },
+ "forced": "{\"ankle_follow\": 0.9556, \"arm_amp\": 0.2728, \"arm_mirror\": -1, \"foot_ratio\": 0.4815, \"hip_amp\": 0.1855, \"knee_amp\": 0.2966, \"lean\": 0.0352, \"period\": 0.6398, \"roll_amp\": 0.2104, \"roll_mirror\": 1, \"roll_phase\": 0.1821, \"yaw_amp\": 0.0143}",
+ "tol": 0.015
+}

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ExoHominid</title>
+<meta name="description" content="Can the wiring of a human cortical microcircuit serve as the recurrent core of a robot controller? H01 connectome subgraphs as reservoirs for a simulated DARwIn-OP, tested against matched controls.">
+<meta property="og:title" content="ExoHominid: A Human Connectome-Structured Reservoir Policy for Robot Learning">
+<meta property="og:description" content="H01 human cortical subgraphs as the recurrent core of a robot controller, with matched controls and a pre-registered protocol.">
+<meta property="og:image" content="assets/img/fig_overview.png">
+<style>
+:root{
+  --bg:#ffffff; --fg:#1d2330; --muted:#5b6475; --line:#e3e6ec; --card:#f6f7fa;
+  --accent:#0b6bb5; --accent2:#b85a00; --code:#f1f3f7;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#10131a; --fg:#e8ebf2; --muted:#9aa3b5; --line:#262c3a; --card:#171b25; --accent:#5aa9e6; --accent2:#e8924a; --code:#171b25; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{text-align:center;padding:56px 0 24px}
+h1{font-size:clamp(1.7rem,4.2vw,2.5rem);line-height:1.2;margin:0 0 18px;letter-spacing:-.01em}
+.authors{font-size:1.15rem;margin:6px 0 2px}
+.authors a{color:var(--accent);text-decoration:none}
+.affil{color:var(--muted);margin:0}
+.links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 4px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;
+  background:var(--fg);color:var(--bg);text-decoration:none;font-weight:600;font-size:.95rem;border:1px solid var(--fg)}
+.btn.alt{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn:hover{filter:brightness(1.15)}
+.btn.alt:hover{border-color:var(--accent);color:var(--accent);filter:none}
+section{padding:34px 0;border-top:1px solid var(--line)}
+section.first{border-top:none;padding-top:8px}
+h2{font-size:1.6rem;margin:0 0 6px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:26px 0 8px}
+.lede{color:var(--muted);margin:0 0 20px}
+p{margin:0 0 14px}
+figure{margin:20px 0}
+figure img,figure video{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:#000}
+figure.plain img{background:#fff}
+figcaption{color:var(--muted);font-size:.93rem;margin-top:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vid h4{margin:0 0 8px;font-size:1rem}
+.tag{display:inline-block;font-size:.78rem;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--card);border:1px solid var(--line);margin-left:6px;vertical-align:middle}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 6px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px}
+.stat b{display:block;font-size:1.7rem;line-height:1.15;letter-spacing:-.01em}
+.stat span{color:var(--muted);font-size:.86rem}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;position:relative;padding:12px 14px 12px 54px;margin:0 0 10px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;
+  background:var(--accent);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.9rem}
+.steps b{display:block}
+.note{background:var(--card);border-left:4px solid var(--accent2);padding:12px 16px;border-radius:6px;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;margin:12px 0}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--muted);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:.85rem;line-height:1.5}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+footer{padding:30px 0 60px;color:var(--muted);font-size:.9rem;text-align:center;border-top:1px solid var(--line)}
+a{color:var(--accent)}
+@media (max-width:760px){
+  body{font-size:16px}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  header{padding-top:36px}
+}
+
+.btn.off{opacity:.55;cursor:default;pointer-events:none}
+.tldr{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:8px 0 0}
+.tldr b{color:var(--accent)}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0;background:var(--card)}
+summary{cursor:pointer;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>ExoHominid: A Human Connectome-Structured Reservoir Policy for Robot Learning</h1>
+  <p class="authors"><a href="mailto:chisimdi.onyenze@utdallas.edu">Jude Onyenze</a></p>
+  <p class="affil">Department of Mechanical Engineering, University of Texas at Dallas</p>
+  <div class="links">
+    <span class="btn off" title="Preprint to be posted on bioRxiv">Paper (bioRxiv, coming soon)</span>
+    <a class="btn alt" href="https://github.com/MrO9/exohominid">Code</a>
+    <a class="btn alt" href="#results">Results</a>
+    <a class="btn alt" href="#videos">Videos</a>
+    <a class="btn alt" href="#reproduce">Reproduce</a>
+    <a class="btn alt" href="#bibtex">BibTeX</a>
+  </div>
+</header>
+
+<section class="first">
+  <figure class="plain"><img src="assets/img/fig_overview.png" alt="A human head with a brain wiring map above it, an arrow to a robot head with a 300-neuron subgraph above it"><figcaption>From human cortical wiring to a robot controller: a connected region of 300 neurons from the H01 connectome becomes the fixed recurrent core (a reservoir) of the controller of a simulated humanoid. Blue circles: excitatory; orange triangles: inhibitory; grey diamonds: sign unknown. Robot and head drawings are original schematics.</figcaption></figure>
+</section>
+
+<section id="abstract">
+  <h2>Abstract</h2>
+  <p>Can the wiring of a human cortical microcircuit serve as the recurrent core of a robot controller? To ask this, we took the H01 human temporal cortex connectome (Shapson-Coe et al., 2024), extracted a directed, signed graph of 16,599 neurons and sampled 300-neuron subgraphs. Each subgraph became the fixed recurrent network of a reservoir whose linear readout adds small corrections to an open-loop gait of a simulated DARwIn-OP pushing a box. We compared it with degree-preserving shuffles, random graphs, a standard echo-state network (ESN), three sign policies, a memoryless linear readout and a constant correction, over three subgraphs and 30 evaluation episodes per subgraph.</p>
+  <p>Trained readouts raised the success rate from 33% (open loop) to between 60% and 99%, depending on the reservoir. With signs randomised, real and shuffled wiring scored 94% and 97% (p = 0.7), and a constant correction with three trained numbers reached 99%, equal to the best reservoir. This is a very specific task that is easy to train and does not require feedback, so it is not demanding enough to show whether structuring a network on human brain wiring helps; a more complex test would allow a better evaluation. The measured sign assignment lowered performance on one subgraph. We report these results, the controls that accompany them, and a pre-registered protocol for next steps: more refined and more difficult tasks that require adaptation.</p>
+</section>
+
+<section id="overview">
+  <h2>At a glance</h2>
+  <div class="stats">
+    <div class="stat"><b>16,599</b><span>neurons in our graph from H01</span></div>
+    <div class="stat"><b>300</b><span>neurons per reservoir subgraph</span></div>
+    <div class="stat"><b>33% &rarr; 99%</b><span>open loop to best trained policy</span></div>
+    <div class="stat"><b>3 numbers</b><span>a constant correction matched the best reservoir</span></div>
+  </div>
+  <div class="tldr"><b>In short.</b> On this pushing task the wiring made no measurable difference, and the controls show why: the task is solved by a fixed three-number correction, so it cannot yet tell wiring apart. The released code, subgraphs, matched controls and pre-registered protocol are meant for harder tasks.</div>
+</section>
+
+<section id="data">
+  <h2>From H01 to a graph</h2>
+  <p class="lede">One cubic millimetre of human cortex, 16,599 neurons, 300 of them in a reservoir.</p>
+  <p>H01 (Shapson-Coe et al., <em>Science</em>, 2024) reconstructs about 1.05&nbsp;mm&sup3; of left anterior middle temporal gyrus. We read the 166 Avro shards of the c3 synapse tables, kept rows linking two neurons, counted a cell as a neuron if it had at least 5 soma-labelled rows and 20 dendritic-receiver rows, and built a directed graph with 87,706 connections. Each neuron takes one sign (Dale's principle) from the type of its output synapses, with type 1 read as inhibitory, a working assumption we flag throughout. Subgraphs grow from a random neuron in the strongly connected core by repeatedly adding the most strongly tied outside neuron.</p>
+  <div class="grid2">
+    <figure class="plain"><img src="assets/img/fig_nested.png" alt="Nested view from whole brain to our subgraph"><figcaption>Where the data sit, from whole brain to our subgraph.</figcaption></figure>
+    <figure class="plain"><img src="assets/img/fig_h01_graph_A_300_s0.png" alt="A 300-neuron H01 subgraph"><figcaption>The H01 subgraph A_300_s0 (left) beside its degree-preserving rewiring (middle) and a matched random graph (right). Blue: excitatory, orange: inhibitory, grey: sign unknown.</figcaption></figure>
+  </div>
+  <figure class="plain"><img src="assets/img/fig_pipeline.png" alt="Dataset pipeline"><figcaption>The pipeline from the H01 synapse tables to a signed graph and to subgraphs.</figcaption></figure>
+  <h3>Two kinds of synapse</h3>
+  <p>Each neuron gets one sign (excitatory or inhibitory), assumed from the reconstructed synapse type. Excitatory senders push a target up, inhibitory ones push it down; neurons with no sign evidence default to excitatory.</p>
+  <figure class="plain"><img src="assets/img/fig_ei.png" alt="Excitatory and inhibitory synapses, a three-neuron motif, and the real recurrent matrix"><figcaption>Excitatory and inhibitory synapses, a small motif, and the recurrent matrix of the real subgraph A_300_s0 (columns: senders, grouped by sign).</figcaption></figure>
+  <h3>Three subgraphs</h3>
+  <figure class="plain"><img src="assets/img/fig_subgraphs.png" alt="Three 300-neuron subgraphs and their statistics"><figcaption>The three 300-neuron subgraphs. The third is the sparsest, most reciprocal and most inhibitory, and the one where measured signs lowered success.</figcaption></figure>
+</section>
+
+<section id="method">
+  <h2>The experiment</h2>
+  <p class="lede">The policy is evaluated on a pushing task, a simple test of robot manipulation that also exercises whole-body humanoid motion.</p>
+  <ol class="steps">
+    <li><b>Reservoir</b>x &larr; (1 &minus; a)x + a&middot;tanh(Wx + W<sub>in</sub>u), leak 0.3, spectral radius 0.9. W is the sender's sign times the square root of the synapse-row count.</li>
+    <li><b>Policy</b>Twelve inputs (gyroscope, accelerometer, gait phase) feed the reservoir. A linear readout gives a turn command, an ankle lean and a stride multiplier. Zero readout is exactly the open-loop gait.</li>
+    <li><b>Task</b>A DARwIn-OP in Webots R2025a walks to a 0.6&nbsp;m cube 0.5&nbsp;m ahead and pushes it 0.40&nbsp;m. Final queue: 0.7&nbsp;kg box, offsets &plusmn;0.15&nbsp;m, sensor noise 0.05, no simulator-supplied inputs.</li>
+    <li><b>Training</b>Antithetic evolution strategy on the readout only; the checkpoint is chosen on separate validation offsets, with the zero readout as the first candidate.</li>
+    <li><b>Controls</b>Degree-preserving shuffle, random graph, ESN, three sign policies, a memoryless direct readout, and a bias-only constant correction.</li>
+  </ol>
+  <figure class="plain"><img src="assets/img/fig_policy.png" alt="Reservoir, policy and robot"><figcaption>How the reservoir sits between the robot's sensors and its gait: only the linear readout is trained.</figcaption></figure>
+  <figure class="plain"><img src="assets/img/fig_task.png" alt="Side view of the pushing task"><figcaption>The pushing task drawn to scale: a 0.34 m robot, a 0.6 m cube 0.5 m ahead, success at 0.40 m.</figcaption></figure>
+  <figure class="plain"><img src="assets/img/fig_training.png" alt="Evolution-strategy training loop"><figcaption>Training: an antithetic evolution strategy perturbs only the readout, scores each candidate in Webots and updates the readout from the ranked results.</figcaption></figure>
+</section>
+
+<section id="results">
+  <h2>Results</h2>
+  <p class="lede">Final queue: 30 evaluation episodes for each of three subgraphs.</p>
+  <figure class="plain">
+    <img src="assets/img/fig_results.png" alt="Pooled success rate for each condition, with the three subgraphs shown as dots">
+    <figcaption>Every trained condition beat open loop (33%). A three-number constant correction and a standard ESN reached 89 of 90 episodes; H01 wiring with measured signs reached 73 of 90.</figcaption>
+  </figure>
+  <table>
+    <tr><th>Comparison</th><th>Successes (of 90 each)</th><th>Fisher p</th></tr>
+    <tr><td>H01 measured signs vs shuffle (same signs)</td><td>73 vs 75</td><td>0.85</td></tr>
+    <tr><td>H01 permuted signs vs shuffle + permuted signs</td><td>85 vs 87</td><td>0.72</td></tr>
+    <tr><td>H01 measured vs H01 permuted signs</td><td>73 vs 85</td><td>0.011</td></tr>
+    <tr><td>H01 measured signs vs random graph</td><td>73 vs 54</td><td>0.003</td></tr>
+    <tr><td>Bias-only vs direct readout</td><td>89 vs 85</td><td>0.21</td></tr>
+    <tr><td>Bias-only vs ESN</td><td>89 vs 89</td><td>1.0</td></tr>
+  </table>
+  <p>The p-values are descriptive: episodes within a run are not independent, and there are only three subgraphs. With signs randomised, real and shuffled wiring were indistinguishable. Measured signs lowered success on one subgraph (13 and 16 of 30 against 29 and 29 with permuted signs); our sign labels may be noisy, so we do not read this as a statement about real cortex.</p>
+  <div class="note">The pre-registered hypothesis, that H01 wiring with measured signs beats shuffle, random graph, ESN and permuted signs, was not supported on this task. It was better than one control, tied one and worse than two.</div>
+  <details><summary>Reliability notes</summary>
+    <p>Repeated open-loop evaluations on identical box offsets were not identical (10 of 20 in one run, 5 of 20 in another), so differences of a few episodes are within noise. Part of one queue was invalid because the physics world entered a state where every episode was an instant fall; those eight runs were discarded and redone after automatic detection and reload were added. Three controls (shuffle + permute, direct, bias) were added after the main queue and are labelled as such.</p>
+  </details>
+</section>
+
+<section id="videos">
+  <h2>Videos</h2>
+  <p class="lede">Screen recordings from Webots of the simulated DARwIn-OP pushing the 0.6&nbsp;m box.</p>
+  <h3>Baseline and a training run, side by side</h3>
+  <p>Left: the open-loop baseline, the calibrated walker with the readout at zero. Right: a training run with an H01-subgraph reservoir, in which the readout is being trained. The training recording shows candidate readouts being tried one after another, so it is a qualitative view of the behaviour and not a count of successes; success rates are in the results table.</p>
+  <div class="grid2">
+    <figure><video poster="assets/vid/baseline.jpg" src="assets/vid/baseline.mp4" controls muted loop playsinline preload="metadata"></video><figcaption>Baseline (open loop)</figcaption></figure>
+    <figure><video poster="assets/vid/training_h01.jpg" src="assets/vid/training_h01.mp4" controls muted loop playsinline preload="metadata"></video><figcaption>Training run, H01 subgraph (readout being trained)</figcaption></figure>
+  </div>
+  <h3>More recordings</h3>
+  <div class="grid2">
+    <figure><video poster="assets/vid/baseline_fast.jpg" src="assets/vid/baseline_fast.mp4" controls muted loop playsinline preload="metadata"></video><figcaption>Baseline, slightly sped up</figcaption></figure>
+    <figure><video poster="assets/vid/training_graph_control.jpg" src="assets/vid/training_graph_control.mp4" controls muted loop playsinline preload="metadata"></video><figcaption>Training run, graph control (readout being trained)</figcaption></figure>
+  </div>
+  <figure class="plain"><img src="assets/img/fig_frames.png" alt="Frames from the baseline recording"><figcaption>Frames from the open-loop baseline recording.</figcaption></figure>
+  <figure class="plain"><img src="assets/img/fig_trained_frames.png" alt="Frames from a training recording"><figcaption>Frames from the H01-subgraph training recording: the robot stays in contact with the cube and the cube advances toward the goal line.</figcaption></figure>
+</section>
+
+<section id="next">
+  <h2>Next steps</h2>
+  <p>A constant correction solves this task, so a better test needs more refined and more difficult tasks, with conditions that change from episode to episode, so the contribution of connectome-derived wiring can be assessed better. Any such test keeps the matched controls and the pre-registered protocol, and tests a network only if the simple baselines fail the task.</p>
+</section>
+
+<section id="scope">
+  <h2>Scope and caveats</h2>
+  <ul>
+    <li>Three 300-neuron subgraphs of one cubic millimetre of one brain; three seeds give little statistical power.</li>
+    <li>Sign labels rest on an assumption about synapse type; 28&ndash;31% of neurons in each subgraph have no sign evidence and default to excitatory. The inhibitory share in our subgraphs (12&ndash;19%) is below the 29% reported for H01.</li>
+    <li>Edge weights are counts of synapse rows, not measured synaptic strengths. Our export contains somewhat more rows (160.3&nbsp;M) than the synapse count reported in the paper (149.9&nbsp;M); we did not establish why.</li>
+    <li>One task in one simulator, with some physics instability. Nothing here is tested on hardware.</li>
+    <li>A wiring diagram does not specify synaptic strengths, neuromodulation or plasticity. These experiments make no claim about whole-brain emulation, consciousness or reconstructing a person.</li>
+  </ul>
+</section>
+
+<section id="reproduce">
+  <h2>Reproduce</h2>
+  <p>Everything needed to rerun the robot experiments is in the repository; rebuilding the graph from the raw H01 tables is optional (it needs about 30&nbsp;GB of downloads and many hours).</p>
+<pre><code>git clone https://github.com/MrO9/exohominid
+cd exohominid
+# 1. Open webots/worlds/push_box.wbt in Webots R2025a
+# 2. Edit MODE in webots/controllers/h01_dataset_policy/config.py:
+#    "check" -> "baseline" -> "res_check" -> "train" / "queue" -> "eval"
+# 3. Results are written to webots/controllers/h01_dataset_policy/results/</code></pre>
+  <p>See <a href="https://github.com/MrO9/exohominid/blob/main/docs/REPRODUCE.md">REPRODUCE.md</a> for the full steps and <a href="https://github.com/MrO9/exohominid/blob/main/LOG.md">LOG.md</a> for the dated project log, including every failure.</p>
+</section>
+
+<section id="bibtex">
+  <h2>BibTeX</h2>
+<pre><code>@misc{onyenze2026exohominid,
+  author = {Onyenze, Jude},
+  title  = {ExoHominid: A Human Connectome-Structured Reservoir Policy for Robot Learning},
+  year   = {2026},
+  note   = {Preprint in preparation. Code: https://github.com/MrO9/exohominid}
+}</code></pre>
+</section>
+
+<footer>
+  Jude Onyenze &middot; University of Texas at Dallas &middot; <a href="mailto:chisimdi.onyenze@utdallas.edu">chisimdi.onyenze@utdallas.edu</a><br>
+  Data: H01 (<a href="https://doi.org/10.1126/science.adk4858">Shapson-Coe et al., 2024</a>), released by Harvard and Google; we did not create or redistribute it.<br>
+  Page layout inspired by the <a href="https://robot-tv.github.io/">Open-TeleVision</a> project page.
+</footer>
+</div>
+</body>
+</html>

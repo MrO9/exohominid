@@ -1,0 +1,7 @@
+# Robot controller and reservoir: standard library only (Webots' own Python).
+# Figures only (figures/*.py):
+numpy
+matplotlib
+scipy
+networkx
+Pillow

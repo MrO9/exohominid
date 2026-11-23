@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "ExoHominid: A Human Connectome-Structured Reservoir Policy for Robot Learning"
+authors:
+  - family-names: Onyenze
+    given-names: Jude
+    affiliation: "University of Texas at Dallas"
+license: MIT
+repository-code: "https://github.com/MrO9/exohominid"
+date-released: 2026-11-23
