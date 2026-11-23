@@ -1,0 +1,8 @@
+condition,v1_s0,v1_s1,v1_s2,v2_s0,v2_s1,v2_s2,note
+h01_data,26,9,0,29,20,28,v1 s0 used last-generation checkpoint; other v1 runs used a noisy best-score checkpoint
+h01_permute,,,,30,30,30,not run in v1
+h01_random17,20,28,15,30,30,18,
+h01_allpos,1,5,3,,,,not run in v2
+shuffle,3,8,0,30,29,30,
+er,22,29,15,30,30,29,
+esn,22,28,28,29,30,23,

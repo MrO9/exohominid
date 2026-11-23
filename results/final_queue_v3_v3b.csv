@@ -1,0 +1,10 @@
+condition,description,subgraph_0,subgraph_1,subgraph_2,pooled_successes,pooled_episodes,pooled_percent,added_after_main_queue
+open_loop,untrained gait (0.7 kg box),,,,10,30,33,no
+bias,3 trained numbers; no inputs; no reservoir,29,30,30,89,90,99,yes
+esn,standard echo-state network,29,30,30,89,90,99,no
+shuffle_permute,degree-preserving shuffle; signs permuted,29,29,29,87,90,97,yes
+h01_permute,H01 wiring; signs permuted,29,27,29,85,90,94,no
+direct,linear readout of the 12 inputs; no reservoir,29,30,26,85,90,94,yes
+shuffle_data,degree-preserving shuffle; measured signs,29,30,16,75,90,83,no
+h01_data,H01 wiring; measured signs,30,30,13,73,90,81,no
+er,random graph; shuffled signs,18,23,13,54,90,60,no
