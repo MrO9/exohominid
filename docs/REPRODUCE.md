@@ -39,14 +39,3 @@ All scripts are in `pipeline/` and use the standard library only. They were run 
 
 `h01_peek.py`, `h01_stats.py`, `h01_idcheck.py` and `h01_zip_names.py` are the exploration scripts used while checking the data; the `LOG.md` entries explain each.
 
-## Figures
-
-```
-pip install -r requirements.txt
-cd figures
-python fig_results.py .        # needs ../results/final_queue_v3_v3b.csv
-python fig_pipeline.py .       # needs ../webots/subgraphs
-python paper_figs.py           # figures 1, 4-7, 9 of the paper -> ../paper/figs
-python make_frames.py          # frame strips from docs/assets/vid (needs ffmpeg)
-```
-
