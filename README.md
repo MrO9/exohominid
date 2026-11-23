@@ -1,9 +1,14 @@
 # ExoHominid: A Human Connectome-Structured Reservoir Policy for Robot Learning
 
+**by [Jude Onyenze](https://sites.google.com/view/jude-robotics-researcher/)**  
+Department of Mechanical Engineering, University of Texas at Dallas
+
+<img src="docs/assets/img/utd_logo.png" alt="The University of Texas at Dallas seal" width="80">
+
 **Can the wiring of a human cortical microcircuit serve as the recurrent core of a robot controller?**
 We took subgraphs of the H01 human temporal-cortex connectome, used each as the fixed recurrent network of a reservoir, and let a trained linear readout add small corrections to the open-loop gait of a simulated DARwIn-OP that pushes a box. Matched controls (degree-preserving shuffles, random graphs, a standard echo-state network, sign policies, a memoryless readout and a constant correction) tell us what the wiring contributes.
 
-[Project page](https://MrO9.github.io/exohominid) · Paper (bioRxiv, coming soon) · [Project log](LOG.md) · [Reproduce](docs/REPRODUCE.md)
+[Project page](https://MrO9.github.io/exohominid) · [Portfolio](https://sites.google.com/view/jude-robotics-researcher/) · Paper (bioRxiv, coming soon) · [Project log](LOG.md) · [Reproduce](docs/REPRODUCE.md)
 
 ![From human cortical wiring to a robot controller](paper/figs/fig_overview.png)
 
