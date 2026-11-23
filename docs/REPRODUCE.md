@@ -50,10 +50,3 @@ python paper_figs.py           # figures 1, 4-7, 9 of the paper -> ../paper/figs
 python make_frames.py          # frame strips from docs/assets/vid (needs ffmpeg)
 ```
 
-## The paper
-
-`paper/` is the LaTeX source. Upload the folder to Overleaf (main file `paper.tex`) or run `cd paper && latexmk -pdf paper.tex`.
-
-## Serving the project page
-
-The page is the static folder `docs/`. In the GitHub repository settings choose Pages, deploy from the `main` branch, folder `/docs`.
